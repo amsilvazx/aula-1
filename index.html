@@ -1,109 +1,383 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Meu Blog Tech | Antony Silva</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --roxo: #7c3aed;
+            --roxo-escuro: #4c1d95;
+            --vermelho: #ef4444;
+            --fundo: #0f0b1a;
+            --card: #181225;
+            --texto: #f5f3ff;
+            --cinza: #b8b1c9;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--fundo);
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        /* CABEÇALHO */
+        header {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+
+            background:
+                radial-gradient(circle at top left, #7c3aed55, transparent 40%),
+                radial-gradient(circle at bottom right, #ef444455, transparent 40%),
+                var(--fundo);
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .logo span {
+            color: var(--vermelho);
+        }
+
+        header p {
+            color: var(--cinza);
+            font-size: 1.2rem;
+            max-width: 650px;
+        }
+
+        /* MENU */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+
+            padding: 18px;
+            background: #100c1bcc;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #7c3aed55;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--vermelho);
+        }
+
+        /* BOTÃO */
+        .botao {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 13px 25px;
+
+            background: linear-gradient(135deg, var(--roxo), var(--vermelho));
+            color: white;
+
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+
+            box-shadow: 0 8px 25px #7c3aed55;
+            transition: 0.3s;
+        }
+
+        .botao:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px #ef444455;
+        }
+
+        /* CONTEÚDO */
+        main {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 70px 0;
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        .titulo-secao {
+            text-align: center;
+            font-size: 2.3rem;
+            margin-bottom: 40px;
+        }
+
+        .titulo-secao span {
+            color: var(--vermelho);
+        }
+
+        /* POSTS */
+        .posts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        article {
+            background: var(--card);
+            padding: 30px;
+            border-radius: 18px;
+
+            border: 1px solid #7c3aed44;
+
+            transition: 0.3s;
+        }
+
+        article:hover {
+            transform: translateY(-8px);
+            border-color: var(--vermelho);
+            box-shadow: 0 15px 35px #00000055;
+        }
+
+        article h3 {
+            color: var(--roxo);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        article p {
+            color: var(--cinza);
+            margin-bottom: 15px;
+        }
+
+        .autor {
+            color: var(--vermelho);
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* LISTA */
+        ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        li {
+            background: #211832;
+            margin: 8px 0;
+            padding: 10px 15px;
+            border-left: 4px solid var(--vermelho);
+            border-radius: 5px;
+            color: var(--cinza);
+        }
+
+        /* SOBRE */
+        .sobre {
+            background: linear-gradient(135deg, #241344, #3b1010);
+            padding: 45px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #7c3aed55;
+        }
+
+        .sobre p {
+            max-width: 700px;
+            margin: auto;
+            color: var(--cinza);
+            font-size: 1.1rem;
+        }
+
+        /* RODAPÉ */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #090711;
+            border-top: 1px solid #7c3aed44;
+            color: var(--cinza);
+        }
+
+        footer strong {
+            color: var(--vermelho);
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 850px) {
+            .posts {
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            nav {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            nav {
+                flex-wrap: wrap;
+            }
+
+            header {
+                min-height: 75vh;
+            }
+
+            .sobre {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
-<body>
- <h1>Meu blog tech</h1>
- <p>meu conhecimentos sobre tecnologia e progamação</p>
-</main>
-<H2>meu primeiro post</H2>
-<p>por: Antony Silva</p>
-<a href="https://www.wikipedia.org">Acessar site</a>
-<p>Boas-vindas ao meu blog tec</p>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Blog Tech</title>
-</head>
 
 <body>
 
-    <header>
-        <h1>Meu Blog Tech</h1>
-        <p>Meus conhecimentos sobre tecnologia e programação.</p>
+    <!-- MENU -->
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#posts">Posts</a>
+        <a href="#sobre">Sobre</a>
+    </nav>
 
-        <nav>
-            <a href="#inicio">Início</a> |
-            <a href="#posts">Posts</a> |
-            <a href="#sobre">Sobre</a>
-        </nav>
+    <!-- CAPA -->
+    <header id="inicio">
+        <h1 class="logo">Meu Blog <span>Tech</span></h1>
+
+        <p>
+            Tecnologia, programação e meus conhecimentos
+            sobre o mundo digital.
+        </p>
+
+        <a class="botao" href="#posts">Ver meus posts ↓</a>
     </header>
 
-    <main id="inicio">
+    <main>
 
+        <!-- POSTS -->
         <section id="posts">
-            <h2>Meus Posts</h2>
 
-            <article>
-                <h3>Meu primeiro post</h3>
-                <p><strong>Por:</strong> Antony Silva</p>
+            <h2 class="titulo-secao">
+                Meus <span>Posts</span>
+            </h2>
 
-                <p>
-                    Boas-vindas ao meu blog tech! Aqui vou compartilhar
-                    meus conhecimentos sobre tecnologia e programação.
-                </p>
+            <div class="posts">
 
-                <a href="https://www.wikipedia.org" target="_blank">
-                    Acessar site
-                </a>
-            </article>
+                <article>
+                    <h3>🚀 Meu primeiro post</h3>
 
-            <hr>
+                    <p class="autor">
+                        Por: Antony Silva
+                    </p>
 
-            <article>
-                <h3>O que é programação?</h3>
-                <p><strong>Por:</strong> Antony Silva</p>
+                    <p>
+                        Boas-vindas ao meu Blog Tech!
+                        Aqui vou compartilhar meus conhecimentos,
+                        projetos e experiências com tecnologia.
+                    </p>
 
-                <p>
-                    Programação é o processo de criar instruções para que
-                    um computador consiga realizar determinadas tarefas.
-                </p>
+                    <a
+                        class="botao"
+                        href="https://www.wikipedia.org"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Acessar site
+                    </a>
+                </article>
 
-                <p>
-                    Existem várias linguagens de programação, como
-                    HTML, CSS, JavaScript, Python e Java.
-                </p>
-            </article>
+                <article>
+                    <h3>💻 O que é programação?</h3>
 
-            <hr>
+                    <p class="autor">
+                        Por: Antony Silva
+                    </p>
 
-            <article>
-                <h3>Aprendendo HTML</h3>
-                <p><strong>Por:</strong> Antony Silva</p>
+                    <p>
+                        Programação é o processo de criar instruções
+                        para que um computador consiga realizar
+                        determinadas tarefas.
+                    </p>
 
-                <p>
-                    HTML é uma linguagem usada para estruturar páginas
-                    da internet. Com ele podemos criar títulos,
-                    parágrafos, imagens, links e muito mais.
-                </p>
+                    <p>
+                        Algumas linguagens populares são:
+                        HTML, CSS, JavaScript, Python e Java.
+                    </p>
+                </article>
 
-                <ul>
-                    <li>HTML cria a estrutura da página</li>
-                    <li>CSS estiliza a página</li>
-                    <li>JavaScript adiciona interatividade</li>
-                </ul>
-            </article>
+                <article>
+                    <h3>🌐 Aprendendo HTML</h3>
 
+                    <p class="autor">
+                        Por: Antony Silva
+                    </p>
+
+                    <p>
+                        HTML é usado para estruturar páginas da
+                        internet. Com ele podemos criar títulos,
+                        textos, imagens, links e muito mais.
+                    </p>
+
+                    <ul>
+                        <li>HTML → Estrutura</li>
+                        <li>CSS → Estilo</li>
+                        <li>JavaScript → Interatividade</li>
+                    </ul>
+                </article>
+
+            </div>
         </section>
 
+        <!-- SOBRE -->
         <section id="sobre">
-            <h2>Sobre o blog</h2>
 
-            <p>
-                Este é um blog criado por Antony Silva para compartilhar
-                conhecimentos e experiências sobre tecnologia e programação.
-            </p>
+            <div class="sobre">
+
+                <h2 class="titulo-secao">
+                    Sobre o <span>Blog</span>
+                </h2>
+
+                <p>
+                    Este é um blog criado por <strong>Antony Silva</strong>
+                    para compartilhar conhecimentos, projetos e
+                    experiências sobre tecnologia e programação.
+                </p>
+
+                <a class="botao" href="#inicio">
+                    Voltar ao topo ↑
+                </a>
+
+            </div>
+
         </section>
 
     </main>
 
+    <!-- RODAPÉ -->
     <footer>
-        <p>&copy; 2026 - Meu Blog Tech | Antony Silva</p>
+        <p>
+            &copy; 2026 <strong>Meu Blog Tech</strong> —
+            Criado por Antony Silva
+        </p>
     </footer>
 
 </body>
